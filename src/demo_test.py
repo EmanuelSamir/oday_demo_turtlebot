@@ -93,33 +93,46 @@ if __name__ == '__main__':
 
 
 	# Actions
-
-	
-	set_gripper(gripper, True)
-
-	set_arm_pose(arm, 0.27, 0, 0.055, yo = 0.1986693, w = 0.9800666)
-
-	rospy.sleep(3)
-
-	move_linear(robot_base, 0.06)
-	
-	set_arm_pose(arm, 0.27, 0, 0.085)
-
-	set_gripper(gripper, False)	
-
-	#set_arm_pose(arm, 0.15, 0, 0.24)
-	set_arm_pose(arm, 0.26, 0, 0.15)
-
-	rospy.sleep(3)
-
-	move_linear(robot_base, 0.26)
-
-	move_angular(robot_base, 0.15)
-	
-	set_arm_pose(arm, 0.27, 0, 0.26)
-
-	rospy.sleep(3)
-
+	while not rospy.is_shutdown():
+		set_gripper(gripper, True)
+		rospy.sleep(1)
+		move_linear(robot_base, 0.08)
+		rospy.sleep(1)
+		set_arm_pose(arm, 0.27, 0, 0.055, yo = 0.1986693, w = 0.9800666)
+		rospy.sleep(1)
+		set_arm_pose(arm, 0.27, 0, 0.085)
+		set_gripper(gripper, False)	
+		set_arm_pose(arm, 0.13, 0, 0.26)
+		rospy.sleep(2)
+		move_linear(robot_base, 0.08, fwd = False)
+		rospy.sleep(1)
 	moveit_commander.roscpp_shutdown()
 
-	rospy.spin()
+
+	# set_gripper(gripper, True)
+
+	# set_arm_pose(arm, 0.27, 0, 0.055, yo = 0.1986693, w = 0.9800666)
+
+	# rospy.sleep(3)
+
+	# move_linear(robot_base, 0.06)
+	
+	# set_arm_pose(arm, 0.27, 0, 0.085)
+
+	# set_gripper(gripper, False)	
+
+	# set_arm_pose(arm, 0.26, 0, 0.15)
+
+	# rospy.sleep(3)
+
+	# move_linear(robot_base, 0.26)
+
+	# move_angular(robot_base, 0.15)
+	
+	# set_arm_pose(arm, 0.27, 0, 0.26)
+
+	# rospy.sleep(3)
+
+	# moveit_commander.roscpp_shutdown()
+
+	# rospy.spin()

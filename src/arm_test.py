@@ -67,19 +67,14 @@ if __name__ == '__main__':
 	
 	display_trajectory_publisher=rospy.Publisher('/move_group/display_planned_path',moveit_msgs.msg.DisplayTrajectory, queue_size=1)
 	
-	set_gripper(gripper, True)
 
-	set_arm_pose(arm, 0.27, 0, 0.055, yo = 0.1986693, w = 0.9800666)
-
-	rospy.sleep(3)
-	
-	set_arm_pose(arm, 0.27, 0, 0.085)
-
-	set_gripper(gripper, False)	
-
-	set_arm_pose(arm, 0.15, 0, 0.24)
-
-
+	while not rospy.is_shutdown():
+		set_gripper(gripper, True)
+		set_arm_pose(arm, 0.27, 0, 0.055, yo = 0.1986693, w = 0.9800666)
+		rospy.sleep(1)
+		set_arm_pose(arm, 0.27, 0, 0.085)
+		set_gripper(gripper, False)	
+		set_arm_pose(arm, 0.13, 0, 0.26)
+		rospy.sleep(2)
 	moveit_commander.roscpp_shutdown()
-
-	rospy.spin()
+	
